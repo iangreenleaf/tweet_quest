@@ -1,4 +1,30 @@
 defmodule TweetQuest.OAuth do
+  @moduledoc """
+  Helpers for 3-legged OAuth with Twitter.
+
+  Expects the consumer key and secret to be set in config:
+
+      config :tweet_quest,
+        consumer_credentials: {"MY_CONSUMER_KEY", "MY_CONSUMER_SECRET"}
+
+  Usage:
+
+      {:ok, %{"oauth_token" => token}} =
+        TweetQuest.OAuth.request_token("http://my-app.com/callback")
+
+      {:ok, authorize_url} = TweetQuest.OAuth.authorize_url(token)
+
+      # Send the user to `authorize_url`...
+
+      # When a user is returned to your callback endpoint:
+
+      {:ok, %{"oauth_token" => token, "oauth_token_secret" => secret}} =
+        TweetQuest.OAuth.access_token(oauth_token, oauth_verifier)
+
+      {:ok, %{body: twitter_user}} =
+        TweetQuest.verify_credentials(token, secret, include_email: true)
+  """
+
   import TweetQuest
 
   # https://developer.twitter.com/en/docs/authentication/api-reference/request_token

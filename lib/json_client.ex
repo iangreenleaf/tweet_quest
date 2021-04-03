@@ -1,4 +1,8 @@
 defmodule JSONClient do
+  @moduledoc """
+  Simple HTTPoison client that encodes and decodes JSON data in the body
+  of requests and responses.
+  """
   use HTTPoison.Base
 
   def process_request_body(""), do: ""

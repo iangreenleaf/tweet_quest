@@ -1,4 +1,8 @@
 defmodule HTTPoisonDispatcher do
+  @moduledoc """
+  Simple Quest dispatcher using HTTPoison.
+  """
+
   def dispatch(%Quest{encoding: :json} = q) do
     options = [{:params, q.params} | q.adapter_options]
 

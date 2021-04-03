@@ -1,6 +1,15 @@
 defmodule TweetQuest do
   @moduledoc """
-  Documentation for `TweetQuest`.
+  Build and dispatch a Quest-style Twitter API request.
+
+  Example:
+
+      TweetQuest.client()
+      |> consumer_credentials({"MY_CONSUMER_KEY", "MY_CONSUMER_SECRET"})
+      |> client_credentials({"MY_OAUTH_TOKEN", "MY_OAUTH_SECRET"})
+      |> request(:get, "favorites/list.json", opts)
+      |> dispatch()
+      |> wait_for_rate_limiting()
   """
 
   @default_q %Quest{
