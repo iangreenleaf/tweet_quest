@@ -22,6 +22,8 @@ defmodule TweetQuest.MixProject do
   defp deps do
     [
       {:bypass, "~> 2.1", only: :test},
+      {:credo, "~> 1.4", only: [:dev, :test], runtime: false},
+      {:dialyxir, "~> 1.0", only: [:dev, :test], runtime: false},
       {:httpoison, "~> 1.7"},
       {:jason, "~> 1.0"},
       {:oauther, "~> 1.1"}
