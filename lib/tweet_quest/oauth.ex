@@ -3,9 +3,7 @@ defmodule TweetQuest.OAuth do
 
   # https://developer.twitter.com/en/docs/authentication/api-reference/request_token
   def request_token(oauth_callback, opts \\ []) do
-    client(
-      base_url: "https://api.twitter.com/"
-    )
+    client(base_url: "https://api.twitter.com/")
     |> consumer_credentials(Elixir.Application.get_env(:tweet_quest, :consumer_credentials))
     |> client_credentials({"", ""})
     |> request(:post, "oauth/request_token", [{:oauth_callback, oauth_callback} | opts])
@@ -44,9 +42,7 @@ defmodule TweetQuest.OAuth do
 
   # https://developer.twitter.com/en/docs/authentication/api-reference/access_token
   def access_token(oauth_token, oauth_verifier) do
-    client(
-      base_url: "https://api.twitter.com/"
-    )
+    client(base_url: "https://api.twitter.com/")
     |> consumer_credentials(Elixir.Application.get_env(:tweet_quest, :consumer_credentials))
     |> client_credentials({oauth_token, ""})
     |> request(:post, "oauth/access_token",
